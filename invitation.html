@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💚 Matcha Date Invitation 💌</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Poppins:wght@400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fef8f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            font-family: "Poppins", sans-serif;
+            padding: 20px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 170, 185, 0.95); /* Soft pink, higher opacity */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ff4f7b;
+            font-family: "Indie Flower", cursive;
+            z-index: 10;
+            transition: opacity 0.8s ease-in-out;
+        }
+
+        .hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .yes-btn {
+            background-color: #ff6b81;
+            color: white;
+            border: none;
+            padding: 14px 34px;
+            font-size: 1.5rem;
+            font-family: "Poppins", sans-serif;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: 0.3s;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .yes-btn:hover {
+            background-color: #ff4f7b;
+            transform: scale(1.1);
+        }
+
+        /* Invitation Card */
+        .invitation {
+            background: #fff3e6;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 500px;
+            border: 4px solid #ff9aa2;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 1s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        .show-invitation {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .invitation h1 {
+            font-size: 2.2rem;
+            color: #ff6b81;
+            font-family: "Indie Flower", cursive;
+            margin-bottom: 10px;
+        }
+
+        .details-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .details-table td {
+            padding: 12px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #ff758f;
+            background-color: rgba(255, 245, 245, 0.8);
+            border: 2px dashed #ffb3b3;
+            border-radius: 8px;
+        }
+
+        .invitation img {
+            width: 80%;
+            max-width: 280px;
+            margin: 20px 0;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            border: 3px solid #ff85a1;
+        }
+
+        .back-btn {
+            background-color: #ff85a1;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            font-size: 1.2rem;
+            font-family: "Poppins", sans-serif;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .back-btn:hover {
+            background-color: #ff6b81;
+            transform: scale(1.05);
+        }
+
+        /* Mobile-Friendly */
+        @media (max-width: 600px) {
+            .invitation {
+                padding: 30px;
+            }
+            .invitation h1 {
+                font-size: 2rem;
+            }
+            .details-table td {
+                font-size: 1.1rem;
+                padding: 10px;
+            }
+            .back-btn {
+                font-size: 1rem;
+                padding: 10px 24px;
+            }
+            .yes-btn {
+                font-size: 1.2rem;
+                padding: 12px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Overlay with "Are you ready?" -->
+    <div class="overlay" id="overlay">
+        Are you ready? 💖
+        <button class="yes-btn" onclick="startInvitation()">Yes! 💕</button>
+    </div>
+
+    <!-- Invitation -->
+    <div class="invitation" id="invitation">
+        <h1>💌 You're Invited! 💚</h1>
+        <table class="details-table">
+            <tr>
+                <td>📅 <strong>When:</strong> February 14, 7PM</td>
+            </tr>
+            <tr>
+                <td>📍 <strong>Where:</strong> Coffee Dojo</td>
+            </tr>
+            <tr>
+                <td>🍵 <strong>What:</strong> Matcha Date with me 💚✨</td>
+            </tr>
+        </table>
+        <img src="latte.gif" alt="Matcha Love">
+        <br>
+        <button class="back-btn" onclick="window.location.href='index.html'">Back</button>
+    </div>
+
+    <!-- Background Music -->
+    <audio id="bg-music" loop>
+        <source src="stuck.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function startInvitation() {
+            // Hide overlay
+            document.getElementById("overlay").classList.add("hidden");
+
+            // Show invitation
+            setTimeout(() => {
+                document.getElementById("invitation").classList.add("show-invitation");
+                
+                // Play music automatically
+                let audio = document.getElementById("bg-music");
+                audio.play().catch(error => {
+                    console.log("Autoplay prevented. User interaction needed.");
+                });
+            }, 500); // Small delay for smooth transition
+        }
+    </script>
+
+</body>
+</html>
