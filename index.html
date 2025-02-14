@@ -16,8 +16,8 @@
             height: 100vh;
             text-align: center;
             font-family: "Dancing Script", cursive;
-            margin: 0;
             overflow: hidden;
+            margin: 0;
         }
 
         /* Overlay styling */
@@ -27,7 +27,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: white;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -37,18 +37,17 @@
             font-family: "Dancing Script", cursive;
             text-align: center;
             z-index: 10;
-            padding: 20px;
         }
 
         #overlay img {
-            width: 200px;
+            width: 250px;
             height: auto;
             margin-bottom: 20px;
         }
 
         #overlay button {
             margin-top: 20px;
-            padding: 12px 25px;
+            padding: 15px 30px;
             font-size: 1.5rem;
             background-color: #ff69b4;
             border: none;
@@ -69,7 +68,7 @@
         }
 
         h1 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: #fff;
             opacity: 0;
             white-space: nowrap;
@@ -88,8 +87,7 @@
         }
 
         .matcha-gif {
-            width: 80%;
-            max-width: 250px;
+            width: 250px;
             height: auto;
             margin-bottom: 20px;
         }
@@ -99,17 +97,16 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
             margin-top: 20px;
-            flex-wrap: wrap;
         }
 
         button {
             background-color: #ff4d6d;
             color: white;
             border: none;
-            padding: 12px 25px;
-            font-size: 1.2rem;
+            padding: 15px 30px;
+            font-size: 1.5rem;
             font-family: Arial, sans-serif;
             border-radius: 30px;
             cursor: pointer;
@@ -137,42 +134,9 @@
             background-color: #b71c1c;
         }
 
-        /* Make "No" move */
+        /* Make "No" move and stay as "Are you sure?" */
         .moved {
             position: absolute !important;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-
-            .button-container {
-                flex-direction: column;
-            }
-
-            #overlay {
-                font-size: 1.5rem;
-            }
-        }
-
-        h1 {
-            font-size: 8vw; /* Adjusts based on screen width */
-            max-width: 90%; /* Prevents it from overflowing */
-            color: #fff;
-            opacity: 0;
-            white-space: normal; /* Allows wrapping */
-            overflow: hidden;
-            text-align: center; /* Centers text */
-            padding: 0 10px; /* Adds space around text */
-            border-right: none; /* Removes border on small screens */
-        }
-        
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 10vw; /* Increases font size slightly for small screens */
-            }
         }
 
     </style>
@@ -183,7 +147,7 @@
     <div id="overlay">
         <img src="envelope.png" alt="Envelope">
         💌 A message for Ms. Ramirez 💌
-        <br><br>  
+        <br> <br>  <br>  <br>  <br>  
         <button id="start-btn">Open</button>
     </div>
 
@@ -222,8 +186,8 @@
                 noButton.textContent = "Are you sure? 😢";
             }
 
-            let x = Math.random() * (window.innerWidth - 150);
-            let y = Math.random() * (window.innerHeight - 150);
+            let x = Math.random() * (window.innerWidth - 200);
+            let y = Math.random() * (window.innerHeight - 200);
             noButton.classList.add("moved");
             noButton.style.left = `${x}px`;
             noButton.style.top = `${y}px`;
@@ -232,6 +196,7 @@
         document.getElementById("yes-btn").addEventListener("click", function () {
             window.location.href = "invitation.html";
         });
+
 
     </script>
 
