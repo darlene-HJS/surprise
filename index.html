@@ -157,6 +157,24 @@
             }
         }
 
+        h1 {
+            font-size: 8vw; /* Adjusts based on screen width */
+            max-width: 90%; /* Prevents it from overflowing */
+            color: #fff;
+            opacity: 0;
+            white-space: normal; /* Allows wrapping */
+            overflow: hidden;
+            text-align: center; /* Centers text */
+            padding: 0 10px; /* Adds space around text */
+            border-right: none; /* Removes border on small screens */
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 10vw; /* Increases font size slightly for small screens */
+            }
+        }
+
     </style>
 </head>
 
